@@ -1,0 +1,72 @@
+body {
+  background-color: #b3b3b3 !important;
+  font-family: Roboto, sans-serif !important;
+}
+
+#wrapper {
+  width: 85%;
+  margin: auto;
+}
+
+#header {
+  width: 100%;
+  background-color: #88BBD6;
+  border-bottom: 1px solid #fff;
+}
+
+#header h1 {
+  margin: 0.5em 1em;
+  font-size: 42px;
+  font-family: Berkshire Swash, sans-serif;
+  color: #f2f2f2;
+}
+
+#header ul {
+  margin: auto;
+  font-size: 18px;
+}
+
+#header ul li {
+  border-right: 1px solid cornsilk;
+}
+
+#header ul li:last-child {
+  border: 0;
+}
+
+#migas ul {
+  margin: auto !important;
+  background-color: #99D3DF;
+  border-radius: 0;
+}
+
+#migas ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+#migas ul li a:hover {
+  color: white;
+}
+
+#content {
+  background-color: #CDCDCD;
+  border: 5px solid #E9E9E9;
+}
+
+#content h2 {
+  margin: 1em;
+  color: #fff;
+  font-size: 36px;
+  font-family: Berkshire Swash, sans-serif;
+}
+
+#content #busqueda button {
+  width: 2.3em;
+  height: 2.3em;
+}
+
+#content #busqueda button span {
+  color: #fff;
+  z-index: 1000;
+}

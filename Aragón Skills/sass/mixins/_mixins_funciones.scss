@@ -1,0 +1,10 @@
+
+//-------------- Funciones -----------------
+
+@function get-border($color){
+    @return (1px solid $color);
+}
+
+@function get-border-size($size, $color){
+    @return ($size solid $color);
+}
