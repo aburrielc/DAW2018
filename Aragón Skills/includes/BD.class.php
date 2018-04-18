@@ -23,6 +23,7 @@ class BD {
         return $resultado;
     }
     
+    /* Método para obtener los datos del fichero JSON e insertarlos en la bd. */
     public static function obtenerDatosJSON(){
         
         $json_url='json/pelis.json';
@@ -47,10 +48,9 @@ class BD {
                 self::insertarPelicula($imagen, $link, $titulo, $posicion, $rating, $reparto, $voto, $anno);
             }
         }
-        
-        
 	}
     
+    /* Inserción de películas. */
     public static function insertarPelicula($imagen, $link, $titulo, $posicion, $rating, $reparto, $voto, $anno){
         $sql = "INSERT INTO `pelicula`(`imagen`, `link`, `titulo`, `posicion`, `rating`, `reparto`, `voto`, `anno`) VALUES ('$imagen','$link','$titulo','$posicion','$rating','$reparto','$voto','$anno')";
         
@@ -58,6 +58,44 @@ class BD {
         //$resultadoArray = $resultado->fetchAll(PDO::FETCH_ASSOC);
         
         //return $resultadoArray;
+    }
+    
+    /* Obtención de datos de las películas para listarlas. */
+    public static function obtenerPeliculas(){
+		$sql = "SELECT id_pelicula, imagen, titulo, rating, anno FROM pelicula";
+		
+		$resultado = self::ejecutaConsulta($sql);
+        $resultadoArray = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $resultadoArray;
+	}
+    
+    /* Obtención de datos de una película en función de su id. */
+    public static function obtenerPelicula($id_pelicula){
+		$sql = "SELECT * FROM pelicula WHERE id_pelicula='$id_pelicula'";
+		
+		$resultado = self::ejecutaConsulta($sql);
+        $resultadoArray = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $resultadoArray;
+	}
+    
+    /* Eliminamos una película de la bd. */
+    public static function eliminarPelicula($id_pelicula) {
+        $sql = "DELETE FROM pelicula WHERE id_pelicula='$id_pelicula'";
+		
+		$resultado = self::ejecutaConsulta($sql);
+
+		return $resultado;
+    }
+    
+    /* Actualizamos una película de la bd*/
+    public static function actulizarPelicula($id_pelicula, $posicion, $puntuacion, $anno, $reparto) {
+        $sql = "UPDATE pelicula SET posicion='$posicion', rating='$puntuacion', reparto='$reparto', anno='$anno' WHERE id_pelicula='$id_pelicula'";
+		
+		$resultado = self::ejecutaConsulta($sql);
+
+		return $resultado;
     }
 }
     

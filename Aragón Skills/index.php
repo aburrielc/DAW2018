@@ -17,6 +17,9 @@
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Roboto:400,700" rel="stylesheet">
     
+    <!-- jQuery -->
+    <script src="libs/jquery-3.1.1.min.js"></script>
+    
     <title>Lista de películas</title>
 </head>
 <body>
@@ -131,39 +134,44 @@
             </div>
             
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <div class="card mb-4">
-                            <h3 class="card-header text-uppercase">Título</h3>
-                            <img class="card-img-top img-fluid rounded" src="" alt="Imágen">
-                            <p class="card-footer mb-0">Año: 1994 <br> Puntuación: 9.2</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <div class="card mb-4">
-                            <h3 class="card-header text-uppercase">Título</h3>
-                            <img class="card-img-top img-fluid rounded" src="" alt="Imágen">
-                            <p class="card-footer mb-0">Año: 1994 <br> Puntuación: 9.2</p>
-                        </div>
-                     </div>
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <div class="card mb-4">
-                            <h3 class="card-header text-uppercase">Título</h3>
-                            <img class="card-img-top img-fluid rounded" src="" alt="Imágen">
-                            <p class="card-footer mb-0">Año: 1994 <br> Puntuación: 9.2</p>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+                <form class="row" action="fichaPelicula.php" method="post">
+                    <!-- Generamos la lista de películas -->
+                    <?php 
+                        $resultadoPeliculas = BD::obtenerPeliculas();
+                        $arrayProblemas = null;
+                        for ($i = 0; $i < sizeof($resultadoPeliculas); $i++){
+                            echo '<div class="col-12 col-lg-4 col-md-6">';
+                            echo '<div class="card mb-4">';
+                            echo '<h3 class="card-header text-uppercase">'.$resultadoPeliculas[$i]['titulo'].'</h3>';
+                            echo '<img class="card-img-top img-fluid rounded" src="'.$resultadoPeliculas[$i]['imagen'].'" alt="'.$resultadoPeliculas[$i]['titulo'].'">';
+                            echo '<p class="card-footer mb-0">Año: '.$resultadoPeliculas[$i]['anno'].' <br> Puntuación: '.$resultadoPeliculas[$i]['rating'].'</p>';
+                            echo '<button type="submit" class="cardPelicula col-12 col-lg-4 col-md-6 m-auto" name="id_pelicula" value="'.$resultadoPeliculas[$i]['id_pelicula'].'">Ver ficha</button>';
+                            echo '</div>';
+                            echo '</div>';
+                            
+                        }
+                    ?>
+                    
+                </form>
+            </div>     
         </div>
     </div>
     
     <!-- Optional JavaScript -->
+    <script src="js/funciones.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
+    
+    
+    <script>
+        var respuestaBorrado = getParameterByName('respuesta');
+        
+        if(respuestaBorrado == 'borrado'){
+           alert('La película ha sido eliminada con éxito.');
+        }
+    </script>
 </body>
 </html>
