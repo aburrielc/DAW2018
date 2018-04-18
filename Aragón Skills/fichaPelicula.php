@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/mainstyle.css">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Roboto:400,700" rel="stylesheet">
+    
+    <title>Lista de películas</title>
+</head>
+<body>
+    
+    <div id="wrapper">
+        <div id="header">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <h1 class="navbar-brand">Aragón Skills</h1>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    
+                    <!-- Menú de navegación -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inicio</a> 
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Películas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#" target="_blank">En el cine</a>
+                                <a class="dropdown-item" href="#" target="_blank">Próximos estrenos</a>
+                                <a class="dropdown-item" href="#" target="_blank">Películas mejor valoradas</a>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Eventos y noticias
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#" target="_blank">Noticias de cine</a>
+                                <a class="dropdown-item" href="#" target="_blank">Noticias de TV</a>
+                                <a class="dropdown-item" href="#" target="_blank">Noticias de famosos</a>
+                                <a class="dropdown-item" href="#" target="_blank">Encuestas</a>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contactar</a> 
+                        </li>
+                    </ul>
+                    
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Breadcrumb -->
+        <div id="migas">
+            <nav aria-label="breadcrumb navbar">
+                <ul class="breadcrumb m-3">
+                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="#">Películas</a></li>
+                    <li class="breadcrumb-item active">Ficha</li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div id="content">
+            <h2>Cadena Perpetua</h2>
+            
+            <div class="container">
+                    <form class="row">
+                      <div class="form-group col-12 col-md-6 col-lg-12">
+                        <label for="exampleInputPosRanking">Posición Ranking</label>
+                        <input type="number" class="form-control" id="exampleInputPosRanking" placeholder="Pos. Ranking">
+                      </div>
+                      <div class="form-group col-12 col-md-6 col-lg-12">
+                        <label for="exampleInputPuntuacion">Puntuación</label>
+                        <input type="number" class="form-control" id="exampleInputPuntuacion" placeholder="Puntuación">
+                      </div>
+                      <div class="form-group col-12 col-md-6 col-lg-12">
+                        <label for="exampleInputAno">Año</label>
+                        <input type="number" class="form-control" id="exampleInputPuntuacion" placeholder="Año">
+                      </div>
+                      <div class="form-group col-12 col-md-6 col-lg-12">
+                        <label for="exampleReparto">Reparto</label>
+                        <textarea class="form-control" rows="5" id="comment">'Frank Darabant (dir.)'</textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary ml-3 mb-4">Ver ficha en IMDB</button>
+                      <button type="submit" class="btn btn-primary ml-2 mb-4">Actualizar</button>
+                      <button type="submit" class="btn btn-primary ml-2 mb-4">Borrrar</button>
+                 </form>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
