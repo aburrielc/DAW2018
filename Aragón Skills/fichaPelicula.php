@@ -138,29 +138,6 @@
                 formFichaPelicula.action="includes/procesar.php?accion=borrarPelicula&id=<?php print_r($pelicula->getIdPelicula()); ?>";
             }
         }
-        /*
-        $(document).ready(function(){
-            $('#addJugador').submit(function(){
-                var equipo = $('#equipo').val();
-                var nombre = $('#nombre').val();
-
-                $.ajax({
-                    url:"procesarAjax.php",
-                    method:"POST",
-                    data:{accion:"addJugador",equipo:equipo,nombre:nombre},
-                    cache:"false",
-                    beforeSend:function(){
-
-                    },
-                    success:function(data){
-
-                        $('#jugadoresEquipo').append(data);
-                    }
-                });
-
-            });
-        });	
-        */
     
     </script>
     

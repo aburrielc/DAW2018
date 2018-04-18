@@ -97,6 +97,36 @@ class BD {
 
 		return $resultado;
     }
+    
+    /* Películas ordenadas por título. */
+    public static function obtenerPeliculasOrdenadasTitulo(){
+		$sql = "SELECT * FROM pelicula ORDER BY titulo";
+		
+		$resultado = self::ejecutaConsulta($sql);
+        $resultadoArray = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $resultadoArray;
+	}
+    
+    /* Películas ordenadas por fecha. */
+    public static function obtenerPeliculasOrdenadasFecha(){
+		$sql = "SELECT * FROM pelicula ORDER BY anno DESC";
+		
+		$resultado = self::ejecutaConsulta($sql);
+        $resultadoArray = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $resultadoArray;
+	}
+    
+    /* Películas ordenadas por puntuación. */
+    public static function obtenerPeliculasOrdenadasPuntuacion(){
+		$sql = "SELECT * FROM pelicula ORDER BY rating DESC";
+		
+		$resultado = self::ejecutaConsulta($sql);
+        $resultadoArray = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $resultadoArray;
+	}
 }
     
 ?>

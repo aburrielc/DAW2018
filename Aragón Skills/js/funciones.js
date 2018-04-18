@@ -6,7 +6,7 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-//Función Ajax para actualizar los datos de una película.
+//Ajax para actualizar los datos de una película.
 function actualizarPelicula(id_pelicula){
     
     var posicion = document.getElementById("inputPosRanking").value;
@@ -36,7 +36,7 @@ function actualizarPelicula(id_pelicula){
             }
         }
 
-        //Asignar la funcion de procesamiento
+        //Asignar la funcion de procesamiento.
         peticion_http.onreadystatechange=procesaRespuesta;
 
         //Preaparar la petición.
@@ -56,4 +56,39 @@ function actualizarPelicula(id_pelicula){
         aux+=document.getElementById("textReparto").value;
         peticion_http.send(aux);
     }
+}
+
+function ordenarPeliculas(){
+    
+    var radio = document.getElementsByName("optradio").value;
+    
+    //Crear objeto
+    var peticion_http;		
+    if (window.XMLHttpRequest){
+        peticion_http=new XMLHttpRequest();	
+    }else if(window.ActiveXObject){
+        peticion_http=new ActiveXObject("Microsoft.XMLHTTP")
+    }else{
+        alert("Su navegador no soporta Ajax")
+    }
+
+    function procesaRespuesta(){
+        if(peticion_http.readyState==4){//tengo respuesta completa
+            if(peticion_http.status==200){//todo ha ido bien
+                alert('Ordenada.');
+            }
+        }
+    }
+
+    //Asignar la funcion de procesamiento
+    peticion_http.onreadystatechange=procesaRespuesta;
+
+    //Preaparar la petición.
+    peticion_http.open("POST","includes/procesar.php?accion=ordenarPeliculas",true);   //Asíncrono
+    peticion_http.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //Porque esta adjuntado por método post.
+
+    //Enviar la petición.
+    var aux="radio=";
+    aux+=radio;
+    peticion_http.send(aux);
 }

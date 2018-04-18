@@ -27,6 +27,18 @@ if ($accion == "borrarPelicula"){
     }
     
     $resultado = BD::actulizarPelicula($id_pelicula, $posicion, $puntuacion, $anno, $reparto);
+    
+}else if($accion =="ordenarPeliculas"){
+    
+    $radio = $_POST['radio'];
+    
+    if($radio == 'titulo'){
+        $resultado = BD::obtenerPeliculasOrdenadasTitulo();
+    }else if ($radio == 'fecha'){
+        $resultado = BD::obtenerPeliculasOrdenadasFecha();
+    }else{
+        $resultado = BD::obtenerPeliculasOrdenadasPuntuacion();
+    }
 }
 
 ?>

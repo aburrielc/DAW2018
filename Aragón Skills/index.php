@@ -127,9 +127,9 @@
                 
                 <form class="ml-5 mb-4">
                     <span>Ordenar por:</span>
-                    <label class="radio-inline ml-2"><input type="radio" name="optradio">Título</label>
-                    <label class="radio-inline ml-2"><input type="radio" name="optradio">Fecha de estreno</label>
-                    <label class="radio-inline ml-2"><input type="radio" name="optradio">Puntuación</label>
+                    <label class="radio-inline ml-2"><input type="radio" name="optradio" value="titulo" onchange="ordenarPeliculas()">Título</label>
+                    <label class="radio-inline ml-2"><input type="radio" name="optradio" value="fecha" onchange="ordenarPeliculas()">Fecha de estreno</label>
+                    <label class="radio-inline ml-2"><input type="radio" name="optradio" value="puntuacion" onchange="ordenarPeliculas()">Puntuación</label>
                 </form>
             </div>
             
@@ -138,6 +138,7 @@
                     <!-- Generamos la lista de películas -->
                     <?php 
                         $resultadoPeliculas = BD::obtenerPeliculas();
+                        //$resultadoPeliculas = BD::obtenerPeliculasOrdenadasPuntuacion();
                         $arrayProblemas = null;
                         for ($i = 0; $i < sizeof($resultadoPeliculas); $i++){
                             echo '<div class="col-12 col-lg-4 col-md-6">';
@@ -148,7 +149,6 @@
                             echo '<button type="submit" class="cardPelicula col-12 col-lg-4 col-md-6 m-auto" name="id_pelicula" value="'.$resultadoPeliculas[$i]['id_pelicula'].'">Ver ficha</button>';
                             echo '</div>';
                             echo '</div>';
-                            
                         }
                     ?>
                     
