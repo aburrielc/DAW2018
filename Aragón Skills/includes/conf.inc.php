@@ -3,4 +3,12 @@
 	$baseDeDatos = "aragonskills"; 
 	$login = "root";
 	$password = "usbw";
+
+    $hostSMTP = "smtp.gmail.com";
+    $usernameSMTP = "proyecto.boulder@gmail.com";
+    $passwordSMTP = "boulderalcanizgp1";
+    $emailDestino = "andresbc.gsdaw@gmail.com";
+    $destinatario = "Andres";
+    $protocolo = "tls";
+    $puerto = 587;
 ?>

@@ -2,37 +2,15 @@
 <html>
 <?php
     require_once('includes/BD.class.php');
-    require_once('includes/Pelicula.class.php');
-?>
-    
-<?php
-    
-    if (isset($_GET['id_pelicula'])){
-        $id_pelicula = $_GET['id_pelicula']; //Recogemos el ID de la película a consultar.
-        $_SESSION['pelicula'] = $id_pelicula; //Le asginamos a la Sesion el ID de la película a consultar.
-    }
-
-    //Guardamos la película consultada por si el Usuario quiere volver. 
-    if (isset($_POST['id_pelicula'])){
-        $id_pelicula = $_POST['id_pelicula']; //Recogemos el ID de la película a consultar.
-        $_SESSION['pelicula'] = $id_pelicula; //Le asginamos a la Sesion el ID de la película a consultar.
-    }else{
-        $id_pelicula = $_SESSION['pelicula'];//Sino se ha enviado la informacion de la película recogemos la guardada en la sesión.
-    }
-    
-	$resultadoBD  = BD::obtenerPelicula($id_pelicula);
-    
-    $pelicula = null;
-	$pelicula = new Pelicula($resultadoBD[0]['id_pelicula'], $resultadoBD[0]['imagen'], $resultadoBD[0]['link'], $resultadoBD[0]['titulo'], $resultadoBD[0]['posicion'], $resultadoBD[0]['rating'], $resultadoBD[0]['reparto'], $resultadoBD[0]['voto'], $resultadoBD[0]['anno']);
-    
 ?>
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/mainstyle.css">
+    <link rel="stylesheet" href="css/estilos_contacto.css">
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -46,10 +24,9 @@
     <!-- jQuery -->
     <script src="libs/jquery-3.1.1.min.js"></script>
     
-    <title>Ficha - <?php print_r($pelicula->getTitulo()); ?></title>
+    <title>Lista de películas</title>
 </head>
 <body>
-    
     <div id="wrapper">
         <div id="header">
             <nav class="navbar navbar-expand-lg navbar-dark">
@@ -89,7 +66,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="contacto.php">Contactar</a>  
+                            <a class="nav-link" href="contacto.php">Contactar</a>
                         </li>
                     </ul>
                     
@@ -102,54 +79,75 @@
             <nav aria-label="breadcrumb navbar">
                 <ul class="breadcrumb m-3">
                     <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                    <li class="breadcrumb-item"><a href="#">Películas</a></li>
-                    <li class="breadcrumb-item active">Ficha</li>
+                    <li class="breadcrumb-item active">Contactar</li>
                 </ul>
             </nav>
         </div>
         
         <div id="content">
-            <h2><?php print_r($pelicula->getTitulo()); ?></h2>
-            <div class="container">
-                <form id="formFichaPelicula" class="row" action="javascript:void(0)" method="post">
-                    <div class="col-12 col-md-6 col-lg-4 text-center mb-4">
-                        <img class="img-fluid rounded" src="<?php print_r($pelicula->getImagen()); ?>" alt="<?php print_r($pelicula->getTitulo()); ?>">  
+            <div id="contenedor_contacto">
+                <h1><i class="fa fa-envelope-o" aria-hidden="true"></i>Contacto</h1>
+                <!-- <hr> -->
+                <form id="contacto" action="javascript:void(0)" method="post">
+                    <div class="input_contacto">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     </div>
-                    <div class="form-group col-12 col-md-6 col-lg-8">
-                        <label for="inputPosRanking">Posición Ranking</label>
-                        <input type="number" class="form-control" id="inputPosRanking" placeholder="<?php print_r($pelicula->getPosicion()); ?>">
-                        <label for="inputPuntuacion">Puntuación</label>
-                        <input type="number" class="form-control" id="inputPuntuacion" placeholder="<?php print_r($pelicula->getRating()); ?>">
-                        <label for="inputAnno">Año</label>
-                        <input type="number" class="form-control" id="inputAnno" placeholder="<?php print_r($pelicula->getAnno()); ?>">
-                        <label for="textReparto">Reparto</label>
-                        <textarea class="form-control" rows="5" id="textReparto"><?php print_r($pelicula->getReparto()); ?></textarea>
-                        <button type="button" class="btn btn-primary ml-2 my-4" onclick="window.location.href='https://www.imdb.com/<?php print_r($pelicula->getLinkPagina()); ?>'">Ver ficha en IMDB</button>
-                        <button type="submit" class="btn btn-primary ml-2 my-4" onclick="actualizarPelicula(<?php print_r($pelicula->getIdPelicula()); ?>)">Actualizar</button>
-                        <button type="submit" class="btn btn-primary ml-2 my-4" onclick="compruebaBorrado()">Borrar</button>
+                    <div class="input_contacto">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        <span id="compruebaEmail" class="respuestas"></span>
                     </div>
+                    <div class="input_contacto">
+                        <label>Mensaje:</label>
+                        <input type="text" id="asunto" name="asunto" placeholder="Asunto del mensaje" required>
+                        <textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje aquí..." required></textarea>
+                    </div>
+
+                    <input type="submit" id="submit" value="Enviar" onclick="enviarCorreo()">
+                    <?php
+                        if(isset($_GET['respuesta'])){
+                            if($_GET['respuesta'] == "correoEnviado"){
+                                echo "<span class='respuesta_envio'>";
+                                echo 'El mensaje se ha enviado con éxito.';
+                                echo "</span>";
+                            }
+                        }
+                    ?>
                 </form>
             </div>
         </div>
     </div>
     
-    <script>
         
-        function compruebaBorrado(){
-            var borrar = confirm("¿Desea usted borrar la ficha de la película?");
-            if (borrar) {
-                formFichaPelicula.action="includes/procesar.php?accion=borrarPelicula&id=<?php print_r($pelicula->getIdPelicula()); ?>";
-            }
-        }
-    
-    </script>
-    
     <!-- Optional JavaScript -->
     <script src="js/funciones.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script>
+        
+        //Comprobamos que que todos los datos son correctos, es decir, no hay avisos. Y si es asi, procederemos a enviar el correo.
+        function enviarCorreo(){
+            var asunto = document.getElementById('asunto').value;
+            var mensaje = document.getElementById('mensaje').value;
+
+            var nombre = document.getElementById('nombre').value;
+            var email = document.getElementById('email').value;
+
+            if (nombre == "" || email == "" || mensaje == "Escriba su mensaje aquí..." || asunto == "Asunto del mensaje"){
+                alert('Debe rellenar todos los datos correctamente.' + 
+                     '\nAsunto: ' + asunto +
+                     '\nMensaje: ' + mensaje +
+                     '\nNombre: ' + nombre +
+                     '\nEmail: ' + email);
+            }else{
+                contacto.action="includes/procesar.php?accion=enviarCorreo"; //Establecemos un valor al atributo *action* del formulario para poder enviar la informacion
+            }
+        }
+    </script>
     
 </body>
 </html>

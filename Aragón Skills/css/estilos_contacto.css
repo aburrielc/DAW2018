@@ -1,0 +1,143 @@
+#contenedor_contacto{
+    width: 50%;
+    margin: auto;
+    margin-top: 5em;
+    margin-bottom: 2em;
+    text-align: justify;
+    line-height: 1.5em;
+    background: #2f2f2f;
+    color: white;
+    /*
+    border-color: white;
+    border-style: solid;
+    */
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #000;
+}
+
+#contenedor_contacto h1{
+    margin: auto;
+    text-align: center;
+    font-family: Berkshire Swash;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    border-bottom-style: solid;
+    background-color: #88BBD6;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/*
+#contenedor_contacto hr{
+    width: 100%;
+    border-width: thin;
+    margin-bottom: 1em;
+}
+*/
+
+#contenedor_contacto form{
+    margin-top: 1em;
+    padding: 0 5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.input_contacto label{
+    margin: 1em auto;
+    display: block;
+    clear: both;
+    color: #88BBD6;
+    font-family: Berkshire Swash;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.input_contacto input, textarea{
+    width: 80%;
+    height: 2em;
+    float:right;
+    margin: auto;
+    margin-right: 2em;
+    margin-bottom: 1em;
+    text-align: center;
+    border-radius: 5px;
+    color: #6d6d6d;
+}
+
+.input_contacto textarea{
+    height: 8em;
+    text-align: justify;
+    padding: 0 1em;
+    padding-top: 1em;
+    margin-right: 2em;
+}
+
+#contenedor_contacto form input[type="submit"]{
+    margin: 2em auto;
+    font-weight: bold;
+	font-size: 15px;
+	background-color: #88BBD6;
+    color: #fff;
+    width: 8em;
+    height: 3em;
+    border: 2px outset white;
+    border-radius: 5px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#contenedor_contacto form input[type="submit"]:hover{
+    opacity: 1;
+}
+
+#contenedor_contacto .respuestas{
+	font-family: Arial;
+	color: #CB4335;
+	font-style: oblique;
+	font-size: 11px;
+    display: inline-block;
+    width: 100%;
+    padding-left: 2.4em;
+    text-align: center;
+    overflow: hidden;
+}
+
+#contenedor_contacto .respuesta_envio{
+    width: 100%;
+    margin-bottom: 1em;
+    text-align: center;
+    overflow: hidden;
+    color: greenyellow;
+}
+
+@media screen and (max-width: 780px){
+    #contenedor_contacto{
+        width: 95%;
+        padding: 0;
+    }
+    
+    #contenedor_contacto form{
+        padding: 0;
+    }
+    
+    .input_contacto{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .input_contacto input{
+        width: 98%%;
+        margin: auto;
+        align-self: center;
+    }
+    
+    .input_contacto textarea{
+        width: 85%;
+        margin: auto;
+    }
+    
+    #contenedor_contacto .respuestas{
+        padding: 0;
+    }
+}

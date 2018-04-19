@@ -17,6 +17,9 @@
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Roboto:400,700" rel="stylesheet">
     
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
     <!-- jQuery -->
     <script src="libs/jquery-3.1.1.min.js"></script>
     
@@ -67,7 +70,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contactar</a> 
+                            <a class="nav-link" href="contacto.php">Contactar</a>  
                         </li>
                     </ul>
                     
@@ -137,8 +140,8 @@
                 <form class="row" action="fichaPelicula.php" method="post">
                     <!-- Generamos la lista de películas -->
                     <?php 
-                        $resultadoPeliculas = BD::obtenerPeliculas();
-                        //$resultadoPeliculas = BD::obtenerPeliculasOrdenadasPuntuacion();
+                        //$resultadoPeliculas = BD::obtenerPeliculas();
+                        $resultadoPeliculas = BD::obtenerPeliculasOrdenadasPuntuacion();
                         $arrayProblemas = null;
                         for ($i = 0; $i < sizeof($resultadoPeliculas); $i++){
                             echo '<div class="col-12 col-lg-4 col-md-6">';

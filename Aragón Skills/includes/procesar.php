@@ -1,5 +1,6 @@
 <?php
 require_once('BD.class.php');
+require_once("funciones.php");
 
 $accion=$_GET["accion"];
 
@@ -39,6 +40,15 @@ if ($accion == "borrarPelicula"){
     }else{
         $resultado = BD::obtenerPeliculasOrdenadasPuntuacion();
     }
+}else if($accion == "enviarCorreo"){
+    
+    $emailOrigen = $_POST['email'];
+    $nombreOrigen = $_POST['nombre'];
+    $asunto = $_POST['asunto'];
+    $cuerpo = $_POST['mensaje'];
+    
+    enviarMail($emailOrigen,$nombreOrigen,$asunto,$cuerpo);
+	
 }
 
 ?>
