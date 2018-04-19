@@ -24,7 +24,7 @@
     <!-- jQuery -->
     <script src="libs/jquery-3.1.1.min.js"></script>
     
-    <title>Lista de películas</title>
+    <title>Contacto</title>
 </head>
 <body>
     <div id="wrapper">

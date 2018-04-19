@@ -132,7 +132,7 @@
                     <span>Ordenar por:</span>
                     <label class="radio-inline ml-2"><input type="radio" name="optradio" value="titulo" onchange="ordenarPeliculas()">Título</label>
                     <label class="radio-inline ml-2"><input type="radio" name="optradio" value="fecha" onchange="ordenarPeliculas()">Fecha de estreno</label>
-                    <label class="radio-inline ml-2"><input type="radio" name="optradio" value="puntuacion" onchange="ordenarPeliculas()">Puntuación</label>
+                    <label class="radio-inline ml-2"><input type="radio" name="optradio" value="puntuacion" onchange="ordenarPeliculas()" checked>Puntuación</label>
                 </form>
             </div>
             
